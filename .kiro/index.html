@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualisasi Pengeluaran & Anggaran</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Mengambil Chart.js untuk grafik -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h2>Visualisasi Pengeluaran & Anggaran</h2>
+            <div class="header-top">
+                <h2>Visualisasi Pengeluaran</h2>
+                <!-- Tombol Dark Mode -->
+                <button id="theme-toggle" class="btn-small">🌙 Mode Gelap</button>
+            </div>
             <div class="balance-card">
                 <p>TOTAL SALDO</p>
                 <h1 id="total-balance">Rp0</h1>
@@ -31,12 +34,16 @@
                         <input type="number" id="amount" placeholder="0" required>
                     </div>
                     <div class="form-group">
-                        <label for="category">Kategori</label>
-                        <select id="category" required>
+                        <label for="category">Kategori Utama</label>
+                        <select id="category">
                             <option value="Makanan">Makanan</option>
                             <option value="Transportasi">Transportasi</option>
                             <option value="Hiburan">Hiburan</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-category">Atau Kategori Kustom (Opsional)</label>
+                        <input type="text" id="custom-category" placeholder="misal: Tagihan Listrik">
                     </div>
                     <button type="submit" class="btn">Tambah Transaksi</button>
                 </form>
@@ -44,10 +51,16 @@
 
             <div class="dashboard-grid">
                 <section class="list-section">
-                    <h3>Daftar Transaksi</h3>
-                    <ul id="transaction-list" class="list">
-                        <!-- Transaksi akan diinjeksi via JavaScript -->
-                    </ul>
+                    <div class="list-header">
+                        <h3>Daftar Transaksi</h3>
+                        <!-- Fitur Sort (Wajib ada agar JS tidak error) -->
+                        <select id="sort-list">
+                            <option value="default">Terbaru</option>
+                            <option value="highest">Nominal Tertinggi</option>
+                            <option value="lowest">Nominal Terendah</option>
+                        </select>
+                    </div>
+                    <ul id="transaction-list" class="list"></ul>
                 </section>
 
                 <section class="chart-section">
@@ -57,7 +70,6 @@
             </div>
         </main>
     </div>
-    
     <script src="js/script.js"></script>
 </body>
 </html>

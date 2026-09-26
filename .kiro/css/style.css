@@ -9,16 +9,47 @@ body {
     background-color: #f4f7f6;
     color: #333;
     padding: 20px;
+    transition: background 0.3s, color 0.3s;
 }
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+    background-color: #121212;
+    color: #f4f7f6;
+}
+body.dark-mode section, body.dark-mode .balance-card {
+    background: #1e1e1e;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+}
+body.dark-mode input, body.dark-mode select {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+body.dark-mode .list li {
+    border-bottom: 1px solid #333;
+}
+/* ------------------------ */
 
 .container {
     max-width: 900px;
     margin: 0 auto;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-small {
+    padding: 8px 12px;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .balance-card {
@@ -26,6 +57,7 @@ header {
     padding: 20px;
     margin-top: 15px;
     border-radius: 8px;
+    text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
@@ -70,14 +102,22 @@ input, select {
     font-size: 16px;
 }
 
-.btn:hover {
-    background: #2980b9;
-}
-
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.list-header select {
+    width: auto;
+    padding: 5px;
 }
 
 .list {
@@ -92,14 +132,6 @@ input, select {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #eee;
-}
-
-.list-info strong {
-    display: block;
-}
-
-.list-info small {
-    color: #777;
 }
 
 .delete-btn {
